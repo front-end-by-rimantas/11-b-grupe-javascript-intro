@@ -555,10 +555,14 @@ console.log('----------------------');
 console.log('DALYBA');
 
 function dalyba( s1, s2 ) {
-    if ( isFinite(s1) === false ) {
+    if ( isFinite(s1) === false ||
+         s1 === null ||
+         Array.isArray(s1) === true ) {
         return 'Duok pirma skaiciu'
     }
-    if ( isFinite(s2) === false ) {
+    if ( isFinite(s2) === false ||
+         s2 === null ||
+         Array.isArray(s2) === true ) {
         return 'Duok antra skaiciu'
     }
     if ( s2 === 0 ) {
@@ -574,6 +578,9 @@ console.log( dalyba(Infinity, -7) );
 console.log( dalyba(null, NaN) );
 console.log( dalyba('eards', 8) );
 console.log( dalyba(1, 0) );
+console.log( dalyba(1, [5, 2]) );
+console.log( dalyba(null, 5) );
+console.log( dalyba(1, [5]) );
 
 console.log( dalyba(3, 1) );
 console.log( dalyba(10, 5) );
