@@ -551,5 +551,30 @@ console.log( isrinktiRaides( 'abcdefghijkl', 3 ) );
 console.log( isrinktiRaides( 'abcdefghijkl', -3 ) );
 
 
+console.log('----------------------');
+console.log('DALYBA');
+
+function dalyba( s1, s2 ) {
+    if ( isFinite(s1) === false ) {
+        return 'Duok pirma skaiciu'
+    }
+    if ( isFinite(s2) === false ) {
+        return 'Duok antra skaiciu'
+    }
+    if ( s2 === 0 ) {
+        return 'Dalyba is nulio negalima';
+    }
+
+    return s1 / s2;
+}
 
 
+console.log( dalyba('a', 'b') );
+console.log( dalyba(Infinity, -7) );
+console.log( dalyba(null, NaN) );
+console.log( dalyba('eards', 8) );
+console.log( dalyba(1, 0) );
+
+console.log( dalyba(3, 1) );
+console.log( dalyba(10, 5) );
+console.log( dalyba(1/3, 3) );
