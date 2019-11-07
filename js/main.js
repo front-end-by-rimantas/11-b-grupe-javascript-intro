@@ -500,6 +500,56 @@ console.log( didziausiasSkaiciusSarase( [ 'asdf', 99, 14, 0, 18 ] ) );
 console.log( didziausiasSkaiciusSarase( [ 'asdf', 14, 0, false, -0, 0.1234, -Infinity, NaN, Infinity, -18, true, 87, 12 ] ) );
 
 
+console.log('----------------------');
+console.log('ISRINKTI RAIDES');
+
+
+function isrinktiRaides( text, step ) {
+    if ( typeof(text) !== 'string' ) {
+        return 'Pirma reiksme turi buti tekstas';
+    }
+    if ( isFinite(step) === false ) {
+        return 'Antra reiksme turi buti normalus skaicius';
+    }
+    if ( text.length < step ) {
+        return 'Tekstas per trumpas norimam zingsniui';
+    }
+    if ( step === 0 ) {
+        return 'Zingsnis negali buti nulinis, bo mirsi';
+    }
+    if ( step % 1 !== 0 ) {
+        return 'Zingsnis turi buti sveikasis skaicius';
+    }
+
+    let ats = '';
+
+    if ( step > 0 ) {
+        for ( let i=step-1; i<text.length; i=i+step ) {
+            // ats = ats + text[i];
+            ats += text[i];
+        }
+    } else {
+        for ( let i=text.length+step; i>=0; i=i+step ) {
+            ats += text[i];
+        }
+    }
+
+    return ats;
+}
+
+console.log( isrinktiRaides( 1561, 2 ) );
+console.log( isrinktiRaides( '1561', '2' ) );
+console.log( isrinktiRaides( 'abc', 4 ) );
+console.log( isrinktiRaides( 'abc', 0 ) );
+console.log( isrinktiRaides( 'abcdefghijkl', -0 ) );
+console.log( isrinktiRaides( 'abcdefghijkl', NaN ) );
+console.log( isrinktiRaides( 'abcdefghijkl', Infinity ) );
+console.log( isrinktiRaides( 'abcdefghijkl', 1.5 ) );
+
+console.log( isrinktiRaides( 'abcdefg', 2 ) );
+console.log( isrinktiRaides( 'abcdefghijkl', 3 ) );
+console.log( isrinktiRaides( 'abcdefghijkl', -3 ) );
+
 
 
 
