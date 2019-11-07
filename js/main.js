@@ -462,16 +462,23 @@ function didziausiasSkaiciusSarase( list ) {
         return 'Pateiktas sąrašas negali būti tuščias.';
     }
     
-    let biggest = list[0];
+    let biggest = -Infinity;
     
     // einu per skaiciu sarasa
         // jeigu, einamasis skaicius didesnis uz mano jau zinoma didziausia
             // biggest = einamasis skaicius;
 
-    for ( let i=1; i<list.length; i++ ) {
+    for ( let i=0; i<list.length; i++ ) {
+        if ( isFinite(list[i]) === false ) {
+            continue;
+        }
         if ( list[i] > biggest ) {
             biggest = list[i];
         }
+    }
+
+    if ( biggest === -Infinity ) {
+        return 'Sarase nebuvo nei vieno skaiciaus'
     }
 
     return biggest;
@@ -480,15 +487,19 @@ function didziausiasSkaiciusSarase( list ) {
 console.log( didziausiasSkaiciusSarase( 425 ) );
 console.log( didziausiasSkaiciusSarase( 'pomidoras' ) );
 console.log( didziausiasSkaiciusSarase( [] ) );
+console.log( didziausiasSkaiciusSarase( [ 'asdf', 'we', 'jhg' ] ) );
 
 console.log( didziausiasSkaiciusSarase( [ 1 ] ) );
 console.log( didziausiasSkaiciusSarase( [ 1, 2, 3 ] ) );
 console.log( didziausiasSkaiciusSarase( [ -5, 78, 14, 0, 18 ] ) );
 console.log( didziausiasSkaiciusSarase( [ 69, 69, 69, 69, 66 ] ) );
 console.log( didziausiasSkaiciusSarase( [ -1, -2, -3, -4, -5, -6, -7, -8 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 78, 'asdf', 14, 0, 18 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 78, 14, 0, 18, 'asdf' ] ) );
+console.log( didziausiasSkaiciusSarase( [ 'asdf', 99, 14, 0, 18 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 'asdf', 14, 0, false, -0, 0.1234, -Infinity, NaN, Infinity, -18, true, 87, 12 ] ) );
 
 
-console.log( didziausiasSkaiciusSarase( [ 'asdf', 78, 14, 0, 18 ] ) );
-console.log( didziausiasSkaiciusSarase( [ 'asdf', 'asdf', 'asdf' ] ) );
+
 
 
